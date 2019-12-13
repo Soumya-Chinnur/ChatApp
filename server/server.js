@@ -15,9 +15,9 @@ app.use(bodyParser.urlencoded({ extended: true }))  //url encode transmits speci
 app.use(expressValidator());
 
 
-const dbconfig = require('./configuration/dbConfig')//default port number og mongoose
+const dbconfig = require('./configuration/dbConfig')//default port number of mongoose
 const mongoose = require('mongoose');
-mongoose.Promise = global.Promise;
+mongoose.Promise = global.Promise;//promise to handle asynchrnous operations
 mongoose.connect(dbconfig.url, {
     useNewUrlParser: true, useUnifiedTopology: true
 })
