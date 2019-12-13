@@ -1,3 +1,8 @@
+/***************************************************************************************
+ * @purpose: ChatApp
+ * @author: Soumya Chinnur
+ * @file: server.js
+ ***************************************************************************************/
 const express = require('express')//express is framework used to give an application proper structure
 const bodyParser = require('body-parser');//body parser used to extract data
 const expressValidator = require('express-validator');
