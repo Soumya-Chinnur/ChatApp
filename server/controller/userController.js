@@ -1,20 +1,21 @@
-const userServices = require('../services/userServices')
-const tokenGenerate = require('../middlewear/token')
-const nodeMail = require('../middlewear/nodeMailer')
 /**
 * @desc Gets the input from front end pass to model
 * @param req request contains all the requested data
 * @param callback sends the data back or err
 * @return responses with a http response
 */
-//exports register
+//exports register for the user
+const userServices = require('../services/userServices')
+const tokenGenerate = require('../middlewear/token')
+const nodeMail = require('../middlewear/nodeMailer')
+
 exports.register = (request, res) => {
     try {
         //request for the details
         request.checkBody('firstName', 'firstname is invalid').notEmpty().isAlpha();
         request.checkBody('lastName', 'lastName is invalid').notEmpty().isAlpha();
         request.checkBody('email', 'email is invalid').notEmpty().isEmail();
-        request.checkBody('password', 'password is invalid').notEmpty().len(7, 10)
+        request.checkBody('password', 'password is invalid').notEmpty().len(7, 13)
 
         var error = request.validationErrors()//for the validation of errors
         var response = {}
@@ -44,7 +45,6 @@ exports.register = (request, res) => {
         console.log(e)
     }
 }
-
 /**
 * @desc Gets the input from front end filters and performs validation
 * @param req request contains all the requested data
@@ -70,12 +70,6 @@ exports.login = (request, res) => {
                 if (err) {
                     response.failure = false;
                     response.data = err;
-                    res.status(404).send(
-                        response);
-                }
-                else {
-                    response.sucess = true;
-                    response.data = data;
                     res.status(200).send(response);
                 }
 
@@ -91,6 +85,7 @@ exports.login = (request, res) => {
 * @param response sends the data or err
 * @return responses with a http response
 */
+//exports forgotpassword
 exports.forgotpassword = (request, res) => {
     try {
         console.log('Forgot password')
@@ -129,4 +124,39 @@ exports.forgotpassword = (request, res) => {
     } catch (e) {
         console.log(e)
     }
+}
+/**
+* @desc Gets the input from front end filters and performs validation
+* @param req request contains all the requested data
+* @param response sends the data or err
+* @return responses with a http response
+*/
+//exports reset password
+exports.resetPassword = (request, res) => {
+    try {
+        //request for the password and confirm password
+        console.log("Re-setting password");
+        request.checkBody('password', 'password is invalid').notEmpty().len(7, 13);
+        request.checkBody('confirmPassword', 'password is invalid').notEmpty().len(7, 13);
+        var error = request.validationErrors();
+        if (request.body.password != request.body.confirmPassword)
+            var error = "confirmpassword is incorrect";
+        var response = {};
+        if (error) {
+            response.error = error;
+            response.failure = false;
+            return res.status(422).send(response);
+        } else{
+            userServices.resetPassword(request, (err, data) => {
+                if (err) {
+                    res.status(404).send(response);
+                } else {
+                    res.status(200).send(data);
+                }
+            })
+    }
+}
+ catch (e) {
+    console.log(e);
+}
 }

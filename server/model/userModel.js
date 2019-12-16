@@ -30,7 +30,7 @@ let register = mongoose.model("users", userData)
 * @desc Gets the input from front end and stores data in database
 * @param req request contains all the requested data
 * @param callback a callback function
-* @return return a call back function err or data
+* @return return a callback function err or data
 */
 //exports register
 exports.Register = (request, callback) => {
@@ -60,7 +60,7 @@ exports.Register = (request, callback) => {
             })
         }
         else {
-            callback("email is invalid")
+            callback("email is invalid ")
         }
     })
 
@@ -90,7 +90,8 @@ exports.Login = (request, callback) => {
 }
 /**
 * @desc
-Gets the input from front end and stores data in database
+/**
+* @desc Gets the input from front end and stores data in database
 * @param req request contains all the requested data
 * @param callback a callback function
 * @return return a call back function err or data
@@ -104,7 +105,33 @@ exports.forgotPassword = (request, callback) => {
             callback(null, data)
         }
         else {
-            callback("invalid user email");
+            callback("invalid user email ");
         }
     })
+}
+
+/**
+* @desc Gets the input from front end and stores data in deatabase
+* @param req request contains all the requested data
+* @param callback a callback function
+* @return return a call back function err or data
+*/
+//exports reset password
+exports.ResetPassword = (request, callback) => {
+    console.log("reqqqqq", request.decoded);
+    bcrypt.hash(request.body.password, 10, (err, encrypted) => {
+        register.updateOne(
+            { "_id": request.decoded.payload }, {
+            "password": encrypted
+        }
+            , (err, data) => {
+                if (data)
+                    callback(null, data);
+                else
+                    callback("error");
+
+
+            })
+    })
+
 }

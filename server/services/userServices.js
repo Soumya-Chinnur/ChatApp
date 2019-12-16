@@ -1,4 +1,3 @@
-const model = require('../model/userModel')
 /**
 * @desc Gets the input from front end pass to model
 * @param req request contains all the requested data
@@ -6,6 +5,8 @@ const model = require('../model/userModel')
 * @return responses with a http response
 */
 //export register
+const model = require('../model/userModel')
+
 exports.register = (request, callback) => {
     try {
         model.Register(request, (err, data) => {
@@ -20,7 +21,6 @@ exports.register = (request, callback) => {
         console.log(e)
     }
 }
-
 /**
 * @desc Gets the input from front end pass to model
 * @param req request contains all the requested data
@@ -40,7 +40,6 @@ exports.login = (request, callback) => {
         console.log(e);
     }
 }
-
 /**
 * @desc Gets the input from front end pass to model
 * @param req request contains all the requested data
@@ -59,5 +58,25 @@ exports.forgotpassword = (request, callback) => {
         })
     } catch (e) {
         console.log(e)
+    }
+}
+
+/**
+* @desc Gets the input from front end pass to model
+* @param req request contains all the requested data
+* @param callback sends the data back or err
+* @return responses with a http response
+*/
+//exports reset password
+exports.resetPassword = (request, callback) => {
+    try {
+        model.ResetPassword(request, (err, data) => {
+            if (err) {
+                callback(err);
+            } else
+                callback(null, data)
+        })
+    } catch (e) {
+        console.log(e);
     }
 }
