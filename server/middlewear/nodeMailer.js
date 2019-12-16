@@ -10,7 +10,7 @@ exports.sendMailer = (url, email) => {
             pass: process.env.PASSWORD
         }
     });
-    //setup mail configuration
+    ///setup mail configuration
     var mailOptions = {
         from: process.env.EMAIL,//sender email
         to: email,//list of receivers
