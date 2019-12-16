@@ -89,8 +89,6 @@ exports.Login = (request, callback) => {
 
 }
 /**
-* @desc
-/**
 * @desc Gets the input from front end and stores data in database
 * @param req request contains all the requested data
 * @param callback a callback function
