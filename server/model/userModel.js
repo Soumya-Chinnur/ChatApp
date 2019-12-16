@@ -108,7 +108,7 @@ exports.forgotPassword = (request, callback) => {
     })
 }
 
-/**
+/***
 * @desc Gets the input from front end and stores data in deatabase
 * @param req request contains all the requested data
 * @param callback a callback function
