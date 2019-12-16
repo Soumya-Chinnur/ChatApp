@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const bcrypt = require('bcrypt');//bcrypt is used for password hashing
-var Schema = mongoose.Schema;//schema represents how the data is being organised
-var emailExistence = require('email-existence')//checks existence of email address
+const Schema = mongoose.Schema;//schema represents how the data is being organised
+const emailExistence = require('email-existence')//checks existence of email address
 
 const userData = new Schema({
     firstName: {
@@ -34,7 +34,7 @@ let register = mongoose.model("users", userData)
 */
 //exports register
 exports.Register = (request, callback) => {
-    //findone returns the criteria in document when it matches
+//findone returns the criteria in document when it matches
     emailExistence.check(request.body.email, (err, result) => {
         if (result) {
 

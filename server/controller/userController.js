@@ -6,6 +6,7 @@
 */
 //exports register for the user
 const userServices = require('../services/userServices')
+
 const tokenGenerate = require('../middlewear/token')
 const nodeMail = require('../middlewear/nodeMailer')
 
@@ -20,7 +21,7 @@ exports.register = (request, res) => {
         var error = request.validationErrors()//for the validation of errors
         var response = {}
         if (error) {
-            response.error = error
+            response.error = error                                                                                                                
             response.success = false
             console.log('error-register', error)
             console.log('response', response)

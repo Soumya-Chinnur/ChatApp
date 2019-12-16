@@ -2,7 +2,7 @@
 * @description :Chat application
 * @overview : chat application where the API are created
 * @author : Soumya Chinnur
-****************************************************************************************/
+*************************************************************************************/
 const express = require('express')//allows to setup middlewares
 const bodyParser = require('body-parser');//body parsing middleware
 const app = express();//creating an express app

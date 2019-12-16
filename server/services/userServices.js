@@ -10,6 +10,7 @@ const model = require('../model/userModel')
 exports.register = (request, callback) => {
     try {
         model.Register(request, (err, data) => {
+            
             if (err) {
                 callback(err)
             } else {
