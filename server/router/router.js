@@ -3,7 +3,7 @@ const router = express.Router()
 const userController = require('../controller/userController')
 
 
-//POST method is used to submit an entity to the specified resource
+///POST method is used to submit an entity to the specified resource
 //User register using post http method
 router.post('/register', userController.register)
 //GET method requests a representation of the specified resource
