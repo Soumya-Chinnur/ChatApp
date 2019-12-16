@@ -113,7 +113,7 @@ exports.forgotPassword = (request, callback) => {
 * @param req request contains all the requested data
 * @param callback a callback function
 * @return return a call back function err or data
-*/
+***/
 //exports reset password
 exports.ResetPassword = (request, callback) => {
     console.log("reqqqqq", request.decoded);
