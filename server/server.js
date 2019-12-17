@@ -1,4 +1,4 @@
-/****************************************************************************************
+/**********************************************************************************
 * @description :Chat application
 * @overview : chat application where the API are created
 * @author : Soumya Chinnur
@@ -20,7 +20,6 @@ app.use(expressValidator())
 
 app.use('/', routes);//router is attached to an instance of the express class.
 
-// mongoose.Promise = global.Promise;
 //connecting to the database
 console.log(dbconfig.url);
 
