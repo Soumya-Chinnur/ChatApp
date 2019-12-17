@@ -1,4 +1,4 @@
-/**
+/***
 * @desc Gets the input from front end pass to model
 * @param req request contains all the requested data
 * @param callback sends the data back or err
