@@ -10,14 +10,12 @@ exports.GenerateToken = (payload) => {
         return obj;
     }
 }
-exports.verify = (request, res, next) => {
+exports.verify = (request, res) => {
     console.log("Verifies request");///verifies request 
-    var token = request.params.token;
     jwt.verify(token, process.env.KEY, (err, result) => {
         if (err) res.status(422).send({ message: "token is not correct" });
         else {
             request.decoded = result;
-            next();
         }
     })
 
