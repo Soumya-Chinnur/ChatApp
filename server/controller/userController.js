@@ -18,8 +18,8 @@ exports.register = (request, res) => {
         request.checkBody('email', 'email is invalid').notEmpty().isEmail();
         request.checkBody('password', 'password is invalid').notEmpty().len(7, 13)
 
-        var error = request.validationErrors()//for the validation of errors
-        var response = {}
+        const error = request.validationErrors()//for the validation of errors
+        const response = {}
         if (error) {
             response.error = error                                                                                                                
             response.success = false
