@@ -73,6 +73,11 @@ exports.login = (request, res) => {
                     response.data = err;
                     res.status(200).send(response);
                 }
+                else{
+                    response.failure = true;
+                    response.data = data;
+                    res.status(200).send(response);
+                }
 
             })
         }
